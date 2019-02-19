@@ -1,7 +1,13 @@
 #!/bin/bash
 
 filecount=`myquota | tail -1 | awk '{print $4}'`
-filelimit=$[`myquota | tail -1 | awk '{print $5}' | tr -d 'k'`*1000]
+
+#get the number of files we currently have, the output of myquota is slightly different on hawk and sunbird
+if [ `hostname` = "sl1" -o `hostname` = "sl2" ] ; then
+  filelimit=$[`myquota | tail -1 | awk '{print $6}' | tr -d 'k'`*1000]
+else
+  filelimit=$[`myquota | tail -1 | awk '{print $5}' | tr -d 'k'`*1000]
+fi
 
 #check user has enough files left
 if [ $[$filelimit-$filecount] -lt "40000" ] ; then
@@ -12,7 +18,7 @@ if [ $[$filelimit-$filecount] -lt "40000" ] ; then
   exit 1
 fi
 
-
+#check if anaconda is setup correctly
 echo "Testing if Anaconda is configured"
 grep "/apps/languages/anaconda3/etc/profile.d/conda.sh" ~/.bashrc > /dev/null
 if [ "$?" != "0" ] ; then
