@@ -1,12 +1,12 @@
-#!/bin/bash
-
-filecount=`myquota | tail -1 | awk '{print $4}'`
+#!/bin/bash -l
 
 #get the number of files we currently have, the output of myquota is slightly different on hawk and sunbird
 if [ `hostname` = "sl1" -o `hostname` = "sl2" ] ; then
-  filelimit=$[`myquota | tail -1 | awk '{print $6}' | tr -d 'k'`*1000]
+  filecount=`lfs quota -g $USER -h /home | tail -1 | awk '{print $6}'`
+  filelimit=`lfs quota -g $USER -h /home | tail -1 | awk '{print $7}'`
 else
-  filelimit=$[`myquota | tail -1 | awk '{print $5}' | tr -d 'k'`*1000]
+  filecount=`quota -s -g $USER | tail -1 | awk '{print $4}'`
+  filelimit=$[`quota -s -g $USER | tail -1 | awk '{print $5}' | tr -d 'k'`*1000]
 fi
 
 #check user has enough files left
