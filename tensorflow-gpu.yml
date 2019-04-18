@@ -2,10 +2,10 @@ name: tensorflow-gpu
 dependencies:
     - python=3
     - numpy
-    - tensorflow-gpu
+    - tensorflow-gpu cudatoolkit=9.2
     - opencv
-    - caffe
-    - pytorch
-    - torchvision
-    - py-opencv
+    - caffe cudatoolkit=9.2
+    - pytorch  cudatoolkit=9.2
+    - torchvision  cudatoolkit=9.2
+    - py-opencv 
     - pillow
