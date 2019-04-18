@@ -27,6 +27,7 @@ if [ "$?" != "0" ] ; then
   echo "Y/N?"
   read r
   if [ "$r" = "Y" -o "$r" = "y" ] ; then
+    chmod u+w ~/.bashrc 
     echo ". /apps/languages/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
     . /apps/languages/anaconda3/etc/profile.d/conda.sh
   else 
