@@ -3,3 +3,9 @@ dependencies:
     - python=3
     - numpy
     - tensorflow-gpu
+    - opencv
+    - kaffe
+    - pytorch
+    - torchvision
+    - py-opencv
+    - pillow
