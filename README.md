@@ -1,12 +1,12 @@
 # TensorFlow-GPU-Example
-An simple example of how to use Tensorflow with Anaconda, Python and GPU on Super Computing Wales.
-
-Note that this example sets up an Anaconda environment which takes around 40,000 files. The default quota on Super Computing Wales is only 100,000 files, please delete or achive some files before running this if you have more than 60,000 files already.
+An simple example of how to use Tensorflow with Anaconda, Python and GPU on the Aberystwyth University Department of Computer Science GPU server.
+This example assumes you've got anaconda in the anaconda3 directory in your home directory. Change tensorflor_setup and tensorflow-gpu.slurm accordingly if its in a different location.
 
 ## Setup
 
 ```
 git clone https://github.com/SupercomputingWales/TensorFlow-GPU-Example
+git checkout aber
 cd TensorFlow-GPU-Example
 ./tensorflow_setup.sh
 ```
@@ -76,10 +76,5 @@ This should show something like:
 
 ## Potential Problems 
 
-### SCW_TPN_OVERRIDE error
-Hawk will not let you submit a single core job to the GPU partition without first running the commmand:
-`export SCW_TPN_OVERRIDE=1`
-
-This shouldn't be required on Sunbird.
 
 

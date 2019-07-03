@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#workaround for problems with anaconda not running from bashrc, adjust accordingly if you have anaconda installed somewhere else
+source $HOME/anaconda3/etc/profile.d/conda.sh
+
 echo "Checking if Anaconda is installed"
 conda --version 
 if [ "$?" != "0" ] ; then
@@ -18,7 +21,7 @@ wget https://raw.githubusercontent.com/aymericdamien/TensorFlow-Examples/master/
 echo "Patching example code for GPU usage"
 #the patch file contains changes to make this example use the GPU
 #setup path to data files correctly, for some reason python/tensor flow doesn't like using ~/neuralnet_data so we need /home/<userid>/neuralnet_data
-sed -i "s/a.cos/$PWD/" multilayer_perceptron.py.patch 
+sed -i "s/cos/$PWD/" multilayer_perceptron.py.patch 
 patch multilayer_perceptron.py multilayer_perceptron.py.patch
 
 echo "Downloading example MNIST data to ~/neuralnet_data"
