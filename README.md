@@ -6,8 +6,8 @@ This example assumes you've got anaconda in the anaconda3 directory in your home
 
 ```
 git clone https://github.com/SupercomputingWales/TensorFlow-GPU-Example
-git checkout aber
 cd TensorFlow-GPU-Example
+git checkout aber
 ./tensorflow_setup.sh
 ```
 
